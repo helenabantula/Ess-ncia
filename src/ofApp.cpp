@@ -67,50 +67,39 @@ void ofApp::update(){
         disparar=false;
         warming==true;
         llum.equalFade(0.5, 'I', 2, 2500); //(topFade, fade, type, step)
-        count=0;
+        countY=0;
         randomPlay=true;
+        
+    }
+    
+    
+    if ((now>10000) & (randomPlay==true)) {     //véns d'un usuari, 10s després
+        llum.randomPlay(true);
+        randomPlay=false;
         periodMean=periodMean_Init;
         
     }
-    
-    
-    if ((now>10000) & (randomPlay==true)) {
-        llum.randomPlay(true);
-        randomPlay=false;
-        
-//        if (RandomCounter>=RandomPeriod){            //han passat 10s després d'un usuari
-//            llum.randomPlay();
-//            //cout<<RandomCounter<<endl;
-//            //cout<<ofGetElapsedTimeMillis()%RandomPeriod<<endl;
-//            RandomCounter=0;
-//            timeR=ofGetElapsedTimeMillis();
-//        }
-//        
-//        else if (RandomCounter<RandomPeriod) {
-//            RandomCounter=ofGetElapsedTimeMillis()-timeR;
-//            //cout<<RandomCounter<<endl;
-//        
-//        }
-    }
+
     
     
     //& (!llum.leds[0].isFadeIn) & (!llum.leds[0].isFadeOut))
     if (disparar){
         
-        if (heartCounter >=periodMean) {
+        if (heartcounter >=periodMean) {
             heart3.play();
+            
             background.setVolume(0.006f);
             llum.equalFade(1,'I', 1, 200);
-            heartCounter=0;
+            heartcounter=0;
             initialTime=ofGetElapsedTimeMillis();
         }
         
-        else if (heartCounter<periodMean){
-            heartCounter=ofGetElapsedTimeMillis()-initialTime;
+        else if (heartcounter<periodMean){
+            heartcounter=ofGetElapsedTimeMillis()-initialTime;
         }
     }
     
-    //cout<<heartCounter<<endl;
+    //cout<<heartcountYer<<endl;
     
     
     if (resposta[0]=='y') {             //calcul frequencia
@@ -123,21 +112,21 @@ void ofApp::update(){
                 timeF = ofGetElapsedTimeMillis();
         
         
-        switch (count) {
+        switch (countY) {
             case 0:
                 randomPlay=false;
                 initialTime=ofGetElapsedTimeMillis();
                 llum.randomPlay(false);
                 llum.equalFade(1,'O', 1, 2500); //(topFade, fade, type, step)
-                //count++;
+                //countY++;
                 break;
                 
             case 1:
                 disparar=true;
                 
-            case 4:
+            case 3:
                 warming=false;
-                count=1;
+                //countY=1;
                 break;
                 
             default:
@@ -145,14 +134,14 @@ void ofApp::update(){
         }
         
         
-        if (freq<200 & freq>60){
+        if (freq<200 & freq>60 & !warming){
             frequencies.push_back(freq);
         }
         else {
             frequencies.push_back((1000*60)/periodMean_Init);
         }
         
-        
+        freqMean=0;
         for( int i=0; i<frequencies.size(); i++) {
             freqMean += frequencies[i];
         }
@@ -166,7 +155,7 @@ void ofApp::update(){
             periodMean=(1000*60)/freqMean;       // de freq a període
             cout<<"periodMean"<<periodMean<<endl;
         }
-        count++;
+        countY++;
     }
     
     if (resposta[0]=='n'){
@@ -174,7 +163,7 @@ void ofApp::update(){
         //heart2.play();
         //llum.equalFade(1, 'O', 0);
         timeL = ofGetElapsedTimeMillis();
-        //fadeIn=false;
+        between=timeF-timeL;
     }
     
     llum.getInfo();

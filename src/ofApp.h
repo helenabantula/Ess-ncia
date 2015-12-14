@@ -33,11 +33,11 @@ class ofApp : public ofBaseApp{
         int periodMean = 857;  //857, per’ode de 70bpm
         int periodMean_Init=857;
         int RandomPeriod = 2000;
-        int RandomCounter = 0;
+        int Randomcounter = 0;
         int timeR =0;
         ofSerial serial;
     
-        int heartCounter;
+        int heartcounter;
     
     
         // bool		bSendSerialMessage;			// a flag for sending serial
@@ -50,7 +50,7 @@ class ofApp : public ofBaseApp{
         //vector<light> llum;
     
         Light llum;
-        int count = 0;
+        int countY = 0;
         int timeF = 0;
         int timeL = 0;
         int initialTime;
@@ -67,6 +67,7 @@ class ofApp : public ofBaseApp{
         //vector<ofVec2f> frequencies;
         vector<int> frequencies;
         int freqMean;
+        int between;
     
     
     
