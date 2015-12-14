@@ -87,7 +87,7 @@ void Light::equalFade(float k, char fade, int type, int step){
 }
 
 
-void Light::randomPlay(Boolean state){
+void Light::randomPlay(bool state){
     
 //    int numPar = ofRandom(0, leds.size());
 //    float topFade = ofRandom(0.3, 1);

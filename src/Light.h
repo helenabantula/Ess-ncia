@@ -23,7 +23,7 @@ public:
     void getInfo();
     void sendInfo();
     void equalFade(float k, char fade, int type, int step);
-    void randomPlay(Boolean state);
+    void randomPlay(bool state);
     
     ofxArtnet artnet;
     vector<Par> leds;

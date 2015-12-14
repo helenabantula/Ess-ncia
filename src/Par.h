@@ -21,9 +21,9 @@ public:
     unsigned char color[3];
     unsigned char colorI[3];            //color inicial, sempre el mateix
     int id;
-    Boolean isFadeIn = false;
-    Boolean isFadeOut = false;
-    Boolean isRandom = false;
+    bool isFadeIn = false;
+    bool isFadeOut = false;
+    bool isRandom = false;
     
     int time;
     

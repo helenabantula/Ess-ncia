@@ -30,8 +30,8 @@ class ofApp : public ofBaseApp{
     
         float heartRate;
         int i;
-        int freqMean = 857;  //857, per’ode de 70bpm
-        int freqMean_Init=857;
+        int periodMean = 857;  //857, per’ode de 70bpm
+        int periodMean_Init=857;
         int RandomPeriod = 2000;
         int RandomCounter = 0;
         int timeR =0;
@@ -57,14 +57,16 @@ class ofApp : public ofBaseApp{
         int now;
         float freq = 1;        //in ms
     
-        Boolean fadeIn = false;
-        Boolean warming = true;
-        Boolean disparar = false;
-        Boolean randomPlay = true;
+        bool fadeIn = false;
+        bool warming = true;
+        bool disparar = false;
+        bool randomPlay = true;
     
     
-        ofVec2f frequencies[5];
-        ofVec2f cfreq;
+        //ofVec2f frequencies[5];
+        //vector<ofVec2f> frequencies;
+        vector<int> frequencies;
+        int freqMean;
     
     
     

@@ -35,7 +35,7 @@ void ofApp::setup(){
     
     heart3.load("Cor3.wav");
     heart2.setVolume(1);
-    heart2.setMultiPlay(false);
+    heart2.setMultiPlay(true);
     
     background.load("So_fons2.mp3");
     background.setVolume(1);
@@ -69,7 +69,7 @@ void ofApp::update(){
         llum.equalFade(0.5, 'I', 2, 2500); //(topFade, fade, type, step)
         count=0;
         randomPlay=true;
-        freqMean=freqMean_Init;
+        periodMean=periodMean_Init;
         
     }
     
@@ -95,21 +95,22 @@ void ofApp::update(){
     
     
     //& (!llum.leds[0].isFadeIn) & (!llum.leds[0].isFadeOut))
-    if (disparar & !llum.leds[0].isFadeIn & !llum.leds[0].isFadeOut){
+    if (disparar){
         
-        if (heartCounter >=freqMean) {
+        if (heartCounter >=periodMean) {
             heart3.play();
             background.setVolume(0.006f);
             llum.equalFade(1,'I', 1, 200);
-            
             heartCounter=0;
             initialTime=ofGetElapsedTimeMillis();
         }
         
-        else if (heartCounter<freqMean){
+        else if (heartCounter<periodMean){
             heartCounter=ofGetElapsedTimeMillis()-initialTime;
         }
     }
+    
+    //cout<<heartCounter<<endl;
     
     
     if (resposta[0]=='y') {             //calcul frequencia
@@ -121,19 +122,9 @@ void ofApp::update(){
                 //cout<<freq<<endl;
                 timeF = ofGetElapsedTimeMillis();
         
-
-        
-//        if (count==0){
-//            randomPlay=false;
-//            initialTime=ofGetElapsedTimeMillis();
-//            llum.randomPlay(false);
-//            llum.equalFade(1,'O', 1, 2500); //(topFade, fade, type, step)
-//            disparar=true;
-//        }
         
         switch (count) {
             case 0:
-                
                 randomPlay=false;
                 initialTime=ofGetElapsedTimeMillis();
                 llum.randomPlay(false);
@@ -154,18 +145,26 @@ void ofApp::update(){
         }
         
         
-        if (freq<200){
-            frequencies[count].set(freq);
+        if (freq<200 & freq>60){
+            frequencies.push_back(freq);
         }
         else {
-            frequencies[count].set(freqMean*60/1000);
+            frequencies.push_back((1000*60)/periodMean_Init);
         }
         
-        cfreq.average(frequencies, 5);
+        
+        for( int i=0; i<frequencies.size(); i++) {
+            freqMean += frequencies[i];
+        }
+        
+        freqMean /= frequencies.size();
+        
+        cout<<"freqMean"<<freqMean<<endl;
+        
         
         if (warming==false){                // vols recalcularla nomes quan reps una y
-            freqMean=cfreq[0]*1000/60;
-            cout<<freqMean<<endl;
+            periodMean=(1000*60)/freqMean;       // de freq a per’ode
+            cout<<"periodMean"<<periodMean<<endl;
         }
         count++;
     }
