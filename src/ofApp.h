@@ -32,12 +32,18 @@ class ofApp : public ofBaseApp{
         int i;
         int periodMean = 857;  //857, per’ode de 70bpm
         int periodMean_Init=857;
-        int RandomPeriod = 2000;
-        int Randomcounter = 0;
-        int timeR =0;
+        int phaseMean =  60;
+        int phaseMean_Init = 60;
+    
+    
+        //int RandomPeriod = 2000;
+        //int Randomcounter = 0;
+    
+        //int timeR =0;
         ofSerial serial;
     
         int heartcounter;
+        int heartcounterN;
     
     
         // bool		bSendSerialMessage;			// a flag for sending serial
@@ -66,9 +72,12 @@ class ofApp : public ofBaseApp{
         //ofVec2f frequencies[5];
         //vector<ofVec2f> frequencies;
         vector<int> frequencies;
+        vector<int> phases;
         int freqMean;
-        int between;
-    
+        bool playPhase=false;
+        int initialCounter;
+        int sendMachine = 5000;
+        bool alreadySent = false;
     
     
         

@@ -11,8 +11,8 @@
 		5EB5F47132F1826A6E2BF452 /* tod.c in Sources */ = {isa = PBXBuildFile; fileRef = 5811DB2B21798C8706B2639B /* tod.c */; };
 		6B5901E1EA7DAE21C28DF74A /* artnet.c in Sources */ = {isa = PBXBuildFile; fileRef = 629682E3A17A7B2E3ED35410 /* artnet.c */; };
 		73ECD6C7FD72E41CA45E8ED8 /* receive.c in Sources */ = {isa = PBXBuildFile; fileRef = C0ED6090122A9FFCC8B4487B /* receive.c */; };
-		8387EF5E1C08C16300CFD8E3 /* par.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8387EF5C1C08C16300CFD8E3 /* par.cpp */; };
-		83DCE1071BFA9A3200489948 /* light.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 83DCE1051BFA9A3200489948 /* light.cpp */; };
+		8387EF5E1C08C16300CFD8E3 /* Par.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8387EF5C1C08C16300CFD8E3 /* Par.cpp */; };
+		83DCE1071BFA9A3200489948 /* Light.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 83DCE1051BFA9A3200489948 /* Light.cpp */; };
 		9835CE7A8F2A5B83C3C6D406 /* ofxArtnet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D3B45B441560B17233E62CC7 /* ofxArtnet.cpp */; };
 		C82579070C946892DD20550D /* transmit.c in Sources */ = {isa = PBXBuildFile; fileRef = 97580EF680BFC3FD401308B7 /* transmit.c */; };
 		D9CECC1BF720210B296A11BB /* network.c in Sources */ = {isa = PBXBuildFile; fileRef = 67F576E7043501AD940A179D /* network.c */; };
@@ -60,9 +60,9 @@
 		629682E3A17A7B2E3ED35410 /* artnet.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 30; name = artnet.c; path = ../../../addons/ofxArtnet/libs/artnet/src/artnet.c; sourceTree = SOURCE_ROOT; };
 		67F576E7043501AD940A179D /* network.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 30; name = network.c; path = ../../../addons/ofxArtnet/libs/artnet/src/network.c; sourceTree = SOURCE_ROOT; };
 		74DB1B47B9CA58659332B11C /* misc.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = misc.h; path = ../../../addons/ofxArtnet/libs/artnet/include/misc.h; sourceTree = SOURCE_ROOT; };
-		8387EF5C1C08C16300CFD8E3 /* par.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = par.cpp; sourceTree = "<group>"; };
+		8387EF5C1C08C16300CFD8E3 /* Par.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Par.cpp; sourceTree = "<group>"; };
 		8387EF5D1C08C16300CFD8E3 /* Par.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Par.h; sourceTree = "<group>"; };
-		83DCE1051BFA9A3200489948 /* light.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = light.cpp; sourceTree = "<group>"; };
+		83DCE1051BFA9A3200489948 /* Light.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Light.cpp; sourceTree = "<group>"; };
 		83DCE1061BFA9A3200489948 /* Light.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Light.h; sourceTree = "<group>"; };
 		8D6CAF0C75B88E9AD9474BCD /* unistd_d.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = unistd_d.h; path = ../../../addons/ofxArtnet/libs/artnet/include/unistd_d.h; sourceTree = SOURCE_ROOT; };
 		97580EF680BFC3FD401308B7 /* transmit.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 30; name = transmit.c; path = ../../../addons/ofxArtnet/libs/artnet/src/transmit.c; sourceTree = SOURCE_ROOT; };
@@ -178,9 +178,9 @@
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
 				E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */,
 				E4B69E1F0A3A1BDC003C02F2 /* ofApp.h */,
-				83DCE1051BFA9A3200489948 /* light.cpp */,
+				83DCE1051BFA9A3200489948 /* Light.cpp */,
 				83DCE1061BFA9A3200489948 /* Light.h */,
-				8387EF5C1C08C16300CFD8E3 /* par.cpp */,
+				8387EF5C1C08C16300CFD8E3 /* Par.cpp */,
 				8387EF5D1C08C16300CFD8E3 /* Par.h */,
 			);
 			path = src;
@@ -307,9 +307,9 @@
 				2D3636F9BE4A86C2D8CC403F /* misc.c in Sources */,
 				D9CECC1BF720210B296A11BB /* network.c in Sources */,
 				73ECD6C7FD72E41CA45E8ED8 /* receive.c in Sources */,
-				8387EF5E1C08C16300CFD8E3 /* par.cpp in Sources */,
+				8387EF5E1C08C16300CFD8E3 /* Par.cpp in Sources */,
 				5EB5F47132F1826A6E2BF452 /* tod.c in Sources */,
-				83DCE1071BFA9A3200489948 /* light.cpp in Sources */,
+				83DCE1071BFA9A3200489948 /* Light.cpp in Sources */,
 				C82579070C946892DD20550D /* transmit.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

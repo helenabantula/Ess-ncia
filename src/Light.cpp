@@ -68,7 +68,7 @@ void Light::sendInfo(){
 //        artnet.sendDmx("192.168.1.156",packDMX, sizeof(packDMX));
 //       old_packDMX=packDMX;
 //    }
-    artnet.sendDmx("192.168.1.156",packDMX, sizeof(packDMX));
+    artnet.sendDmx("192.168.1.150",packDMX, sizeof(packDMX));
 }
 
 

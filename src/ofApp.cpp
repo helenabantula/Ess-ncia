@@ -9,7 +9,7 @@ void ofApp::setup(){
     ofSetVerticalSync(true);
     i=0;
     serial.listDevices();
-
+    
     vector <ofSerialDeviceInfo> deviceList = serial.getDeviceList();
     
     serial.setup("/dev/cu.usbmodem1411",9600);
@@ -37,7 +37,7 @@ void ofApp::setup(){
     heart2.setVolume(1);
     heart2.setMultiPlay(true);
     
-    background.load("So_fons2.mp3");
+    background.load("so_fons2.mp3");
     background.setVolume(1);
     background.setLoop(true);
     background.play();
@@ -57,13 +57,31 @@ void ofApp::update(){
     serial.readBytes(resposta, 1);  //int readBytes(unsigned char * buffer, int length);
     //cout<<resposta<<endl;
     
+    
+    
+    
     now=ofGetElapsedTimeMillis()-timeL; // timeL: temps que ha passat des de que rebem un 'n'.
-
+    
+    if ((ofGetElapsedTimeMillis()-initialTime)>sendMachine && !alreadySent){
+        if (freqMean<=65)
+            serial.writeByte('a');
+        else if (freqMean>65 && freqMean<=70)
+            serial.writeByte('b');
+        else if (freqMean>70 && freqMean<=75)
+            serial.writeByte('c');
+        else if (freqMean>75 && freqMean<=80)
+            serial.writeByte('d');
+        else if (freqMean>80 && freqMean<=85)
+            serial.writeByte('e');
+        else if (freqMean>85)
+            serial.writeByte('f');
+        alreadySent = true;
+    }
     
     
     if (now>7000 & disparar==true) {            //vŽns d'un usuari, 7s desprŽs
         background.setVolume(0.75);
-        //fadeIn=true;
+        
         disparar=false;
         warming==true;
         llum.equalFade(0.5, 'I', 2, 2500); //(topFade, fade, type, step)
@@ -76,7 +94,10 @@ void ofApp::update(){
     if ((now>10000) & (randomPlay==true)) {     //vŽns d'un usuari, 10s desprŽs
         llum.randomPlay(true);
         randomPlay=false;
+        frequencies.clear();
         periodMean=periodMean_Init;
+        phaseMean=phaseMean_Init;
+        alreadySent = false;
         
     }
 
@@ -84,20 +105,28 @@ void ofApp::update(){
     
     //& (!llum.leds[0].isFadeIn) & (!llum.leds[0].isFadeOut))
     if (disparar){
+        heartcounter=ofGetElapsedTimeMillis()-initialCounter;
+        
+        if((heartcounter >=phaseMean) && playPhase){
+            heart.play();
+            cout<<"no"<<endl;
+            llum.equalFade(1, 'O', 2, 200);   //fadeOut
+            playPhase=false;
+        }
         
         if (heartcounter >=periodMean) {
-            heart3.play();
-            
-            background.setVolume(0.006f);
-            llum.equalFade(1,'I', 1, 200);
-            heartcounter=0;
-            initialTime=ofGetElapsedTimeMillis();
-        }
-        
-        else if (heartcounter<periodMean){
-            heartcounter=ofGetElapsedTimeMillis()-initialTime;
+            //heart3.play();
+            heart2.play();
+            cout<<"yes"<<endl;
+            //llum.equalFade(1,'I', 1, 200);      //seguit de fadeOut
+            llum.equalFade(1, 'I', 2, 200);
+            //heartcounter=0;
+            initialCounter=ofGetElapsedTimeMillis();
+            playPhase=true;
+            //heartcounterN=0;
         }
     }
+
     
     //cout<<heartcountYer<<endl;
     
@@ -116,16 +145,18 @@ void ofApp::update(){
             case 0:
                 randomPlay=false;
                 initialTime=ofGetElapsedTimeMillis();
+                initialCounter=initialTime;
                 llum.randomPlay(false);
-                llum.equalFade(1,'O', 1, 2500); //(topFade, fade, type, step)
+                llum.equalFade(1,'O', 1, 1500); //(topFade, fade, type, step)
                 //countY++;
                 break;
                 
-            case 1:
+            case 2:
                 disparar=true;
                 
             case 3:
                 warming=false;
+                background.setVolume(0.06f);
                 //countY=1;
                 break;
                 
@@ -148,11 +179,12 @@ void ofApp::update(){
         
         freqMean /= frequencies.size();
         
-        cout<<"freqMean"<<freqMean<<endl;
+        //cout<<"freqMean"<<freqMean<<endl;
         
         
         if (warming==false){                // vols recalcularla nomes quan reps una y
             periodMean=(1000*60)/freqMean;       // de freq a per’ode
+            phaseMean=0.25*periodMean;
             cout<<"periodMean"<<periodMean<<endl;
         }
         countY++;
@@ -163,8 +195,20 @@ void ofApp::update(){
         //heart2.play();
         //llum.equalFade(1, 'O', 0);
         timeL = ofGetElapsedTimeMillis();
-        between=timeF-timeL;
+        
+//        if (!warming) {
+//            phases.push_back(timeL-timeF);
+//        
+//            phaseMean=0;
+//        
+//            for( int i=0; i<phases.size(); i++) {
+//                phaseMean += phases[i];
+//            }
+//            phaseMean /= phases.size();
+//            cout<<"phaseMean"<<phaseMean<<endl;
+//        }
     }
+    
     
     llum.getInfo();
 }

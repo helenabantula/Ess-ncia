@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>44C20263-65FF-48F1-B3E1-8D2D683009E5</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Corasonsitu</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>F7458CA0-63BA-452D-B452-DC7B93F5184D</key>
+		<string>https://github.com/helenabantula/Ess-ncia.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Corasonsitu.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>F7458CA0-63BA-452D-B452-DC7B93F5184D</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/helenabantula/Ess-ncia.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>F7458CA0-63BA-452D-B452-DC7B93F5184D</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>F7458CA0-63BA-452D-B452-DC7B93F5184D</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Corasonsitu</string>
+		</dict>
+	</array>
+</dict>
+</plist>
