@@ -94,7 +94,7 @@ void Light::randomPlay(bool state){
 //    
 //    int step = ofRandom(2000,5000);
 //    
-//    if (!leds[numPar].isFadeIn & !leds[numPar].isFadeOut) {
+//    if (!leds[numPar].isFadeIn && !leds[numPar].isFadeOut) {
 //        
 //        leds[numPar].topFade=topFade;
 //        leds[numPar].triggerFadeIn(1, step);

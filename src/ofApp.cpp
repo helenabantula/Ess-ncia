@@ -25,19 +25,19 @@ void ofApp::setup(){
 	//memset(bytesReadString, 0, 4);
     
     ////////////////////////// SOUND ////////////////////////
-    heart.load("Cor_greu1.wav");
+    heart.load("Cor_greu1.wav",true);
     heart.setVolume(1);
     heart.setMultiPlay(false);
     
-    heart2.load("Cor_greu2.wav");
+    heart2.load("Cor_greu2.wav",true);
     heart2.setVolume(1);
     heart2.setMultiPlay(false);
     
-    heart3.load("Cor3.wav");
+    heart3.load("Cor3.wav",true);
     heart2.setVolume(1);
     heart2.setMultiPlay(true);
     
-    background.load("so_fons2.mp3");
+    background.load("so_fons2.mp3",true);
     background.setVolume(1);
     background.setLoop(true);
     background.play();
@@ -79,7 +79,7 @@ void ofApp::update(){
     }
     
     
-    if (now>7000 & disparar==true) {            //véns d'un usuari, 7s després
+    if (now>7000 &&disparar==true) {            //véns d'un usuari, 7s després
         background.setVolume(0.75);
         
         disparar=false;
@@ -91,7 +91,7 @@ void ofApp::update(){
     }
     
     
-    if ((now>10000) & (randomPlay==true)) {     //véns d'un usuari, 10s després
+    if ((now>10000) &&(randomPlay==true)) {     //véns d'un usuari, 10s després
         llum.randomPlay(true);
         randomPlay=false;
         frequencies.clear();
@@ -103,7 +103,7 @@ void ofApp::update(){
 
     
     
-    //& (!llum.leds[0].isFadeIn) & (!llum.leds[0].isFadeOut))
+    //& (!llum.leds[0].isFadeIn) &&(!llum.leds[0].isFadeOut))
     if (disparar){
         heartcounter=ofGetElapsedTimeMillis()-initialCounter;
         
@@ -165,7 +165,7 @@ void ofApp::update(){
         }
         
         
-        if (freq<200 & freq>60 & !warming){
+        if (freq<200 &&freq>60 &&!warming){
             frequencies.push_back(freq);
         }
         else {
