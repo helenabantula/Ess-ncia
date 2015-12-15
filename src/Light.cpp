@@ -10,8 +10,11 @@
 
 
 void Light::initialize(){
-    artnet.setup("192.168.1.113"); //IP de l'ordinador
-    
+#if TARGET_RASPBERRY_PI
+    artnet.setup("192.168.1.103"); //IP de l'ordinador
+#else
+    artnet.setup("192.168.1.113");
+#endif    
     //// Temporary Par ///
     unsigned char  color[3];
     

@@ -11,9 +11,11 @@ void ofApp::setup(){
     serial.listDevices();
     
     vector <ofSerialDeviceInfo> deviceList = serial.getDeviceList();
-    
+#if TARGET_RASPBERRY_PI
+    serial.setup(0, 9600);
+#else    
     serial.setup("/dev/cu.usbmodem1411",9600);
-    
+#endif    
     
     
     int baud = 9600;
