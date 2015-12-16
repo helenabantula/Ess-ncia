@@ -27,19 +27,19 @@ void ofApp::setup(){
 	//memset(bytesReadString, 0, 4);
     
     ////////////////////////// SOUND ////////////////////////
-    heart.load("Cor_greu1.wav",true);
+    heart.load("Cor_greu1.wav",false);
     heart.setVolume(1);
     heart.setMultiPlay(false);
     
-    heart2.load("Cor_greu2.wav",true);
+    heart2.load("Cor_greu2.wav",false);
     heart2.setVolume(1);
     heart2.setMultiPlay(false);
     
-    heart3.load("Cor3.wav",true);
+    heart3.load("Cor3.wav",false);
     heart2.setVolume(1);
-    heart2.setMultiPlay(true);
+    heart2.setMultiPlay(false);
     
-    background.load("so_fons2.mp3",true);
+    background.load("so_fons2.mp3",false);
     background.setVolume(1);
     background.setLoop(true);
     background.play();
@@ -57,7 +57,7 @@ void ofApp::update(){
     //cout<<ofGetElapsedTimeMillis()<<endl;
     unsigned  char resposta[1];
     serial.readBytes(resposta, 1);  //int readBytes(unsigned char * buffer, int length);
-    //cout<<resposta<<endl;
+//    cout<<resposta<<endl;
     
     
     

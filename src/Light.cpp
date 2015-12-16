@@ -44,6 +44,7 @@ void Light::initialize(){
     color[2]=255;
     Par temPar3(color,3);
     leds.push_back(temPar3);
+    sendInfo();
 }
 
 
@@ -101,6 +102,7 @@ void Light::randomPlay(bool state){
 //        
 //        leds[numPar].topFade=topFade;
 //        leds[numPar].triggerFadeIn(1, step);
+	cout<<state<<" "<<ofGetElapsedTimeMillis()<<endl;
 //    }
     
     for (int i=0; i<leds.size(); i++){
